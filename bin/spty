@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby -wU
+
+require 'spty'
+
+$thor_runner = true
+
+Spty::Cli.start(ARGV)
