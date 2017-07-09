@@ -1,18 +1,15 @@
-require 'thor'
-
 module Spty
-  class Cli < Thor
-    desc 'hello NAME', 'This will greet you'
-    long_desc <<-EOF
-    This is a long multi line description
-    EOF
+  class Cli
+    def self.call(args)
+      command = args.shift
 
-    option :upcase
-
-    def hello(name)
-      greeting = "Hello, #{name}"
-      greeting.upcase! if options[:upcase]
-      puts greeting
+      begin
+        klass = Object.const_get("Spty::Command::#{command.capitalize}Command")
+        klass.(args)
+      rescue NameError => _e
+        puts "Do not understand command: #{command}"
+        # [todo] display help menu with list of all valid commands
+      end
     end
   end
 end
