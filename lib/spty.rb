@@ -1,8 +1,15 @@
-require "spty/version"
+require 'spty/version'
 require 'spty/cli'
+require 'spty/apple_script_runner'
 
-require 'spty/commands/version_command'
+def require_all(path)
+  glob = File.join(File.dirname(__FILE__), path, "*.rb")
+  Dir[glob].sort.each do |file|
+    require file
+  end
+end
 
 module Spty
-  # Your code goes here...
+  require_all "spty/commands"
 end
+

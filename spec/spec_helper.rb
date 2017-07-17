@@ -2,7 +2,9 @@ require "bundler/setup"
 require "spty"
 require 'byebug'
 
-require "#{File.dirname(__FILE__)}/support/command_runner_helper"
+dir = File.dirname(__FILE__)
+require "#{dir}/support/command_runner_helper"
+require "#{dir}/shared_examples/player_not_running_shared_example"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
