@@ -1,43 +1,49 @@
 # Spty
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spty`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Spotify Player Terminal Utility. CLI that lets you control your
+(Spotify)[http://spotify.com] player from the terminal. Only works on MacOSX as
+it uses (AppleScript Spotify API)[https://developer.spotify.com/applescript-api/]
+to control the player.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'spty'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install spty
+$ gem install spty
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Spotify player has to be running for these command to work.
 
-## Development
+Show gem version
+```
+$ spty version
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Show current player state
+```
+$ spty player state
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Toggle player play / pause
+```
+$ spty player toggle
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/spty. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/jibone/spty. This project is intended to be a safe, welcoming
+space for collaboration, and contributors are expected to adhere to the
+[Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the Spty project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/spty/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Spty project’s codebases, issue trackers, chat rooms
+and mailing lists is expected to follow the
+[code of conduct](https://github.com/jibone/spty/blob/master/CODE_OF_CONDUCT.md).

@@ -10,9 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["jibone@gmail.com"]
 
   spec.summary       = %q{Spotify Player Terminal Utility}
-  spec.description   = %q{Lets you control Spotify player from the terminal.
-                          Only works for MacOSX.}
-  spec.homepage      = "http://jshamsul.com/gems/spty"
+  spec.description   = %q{Lets you control your Spotify player from the terminal
+                          Currently only works for Mac OSX.}
+  spec.homepage      = "https://github.com/jibone/spty-rb"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
