@@ -28,9 +28,15 @@ module Spty::Command
       end
     end
 
+    ASCRIPT_TRACK_SKIP = <<-EOL
+      tell application "Spotify"
+        next track
+      end tell
+    EOL
     def self.skip(_)
       if Spty::Command::PlayerCommand.running?
-        # pending implementation
+        Spty::AppleScriptRunner.(ASCRIPT_TRACK_SKIP)
+        Spty::Command::TrackCommand.info(nil)
       end
     end
   end
