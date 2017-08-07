@@ -30,6 +30,21 @@ Toggle player play / pause
 $ spty player toggle
 ```
 
+Get track title and artist
+```
+$ spty track info
+```
+
+Skip track and play the next track
+```
+$ spty track skip
+```
+
+Replay previous track
+```
+$ spty track replay
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at
