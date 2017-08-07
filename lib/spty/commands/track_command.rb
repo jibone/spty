@@ -39,5 +39,17 @@ module Spty::Command
         Spty::Command::TrackCommand.info(nil)
       end
     end
+
+    ASCRIPT_TRACK_REPLAY = <<-EOL
+      tell application "Spotify"
+        previous track
+      end tell
+    EOL
+    def self.replay(_)
+      if Spty::Command::PlayerCommand.running?
+        Spty::AppleScriptRunner.(ASCRIPT_TRACK_REPLAY)
+        Spty::Command::TrackCommand.info(nil)
+      end
+    end
   end
 end
