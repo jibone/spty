@@ -1,15 +1,5 @@
 module Spty::Command
-  class TrackCommand
-    def self.call(options)
-      action = options.shift
-
-      begin
-        self.send(action.to_sym, options)
-      rescue NameError => _e
-        puts "Do not understand command: track #{action}"
-      end
-    end
-
+  class TrackCommand < BaseCommand
     ASCRIPT_TRACK_INFO = <<-EOL
       tell application "Spotify"
         set currentTrack to name of current track as string
@@ -34,10 +24,7 @@ module Spty::Command
       end tell
     EOL
     def self.skip(_)
-      if Spty::Command::PlayerCommand.running?
-        Spty::AppleScriptRunner.(ASCRIPT_TRACK_SKIP)
-        Spty::Command::TrackCommand.info(nil)
-      end
+      move_track(ASCRIPT_TRACK_SKIP)
     end
 
     ASCRIPT_TRACK_REPLAY = <<-EOL
@@ -46,10 +33,16 @@ module Spty::Command
       end tell
     EOL
     def self.replay(_)
+      move_track(ASCRIPT_TRACK_REPLAY)
+    end
+
+    def self.move_track(ascript)
       if Spty::Command::PlayerCommand.running?
-        Spty::AppleScriptRunner.(ASCRIPT_TRACK_REPLAY)
+        Spty::AppleScriptRunner.(ascript)
         Spty::Command::TrackCommand.info(nil)
       end
     end
+
+    private_class_method :move_track
   end
 end
