@@ -1,8 +1,8 @@
 # Spty
 
 Spotify Player Terminal Utility. CLI that lets you control your
-(Spotify)[http://spotify.com] player from the terminal. Only works on MacOSX as
-it uses (AppleScript Spotify API)[https://developer.spotify.com/applescript-api/]
+[Spotify](http://spotify.com) player from the terminal. Only works on MacOSX as
+it uses [AppleScript API](https://developer.spotify.com/applescript-api/)
 to control the player.
 
 ## Installation
@@ -28,6 +28,21 @@ $ spty player state
 Toggle player play / pause
 ```
 $ spty player toggle
+```
+
+Get track title and artist
+```
+$ spty track info
+```
+
+Skip track and play the next track
+```
+$ spty track skip
+```
+
+Replay previous track
+```
+$ spty track replay
 ```
 
 ## Contributing

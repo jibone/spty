@@ -1,15 +1,5 @@
 module Spty::Command
-  class PlayerCommand
-    def self.call(options)
-      action = options.shift
-
-      begin
-        self.send(action.to_sym, options)
-      rescue NameError => _e
-        puts "Do not understand command: player #{action}"
-      end
-    end
-
+  class PlayerCommand < BaseCommand
     # Check if the application is running
     ASCRIPT_PLAYER_DETECT = <<-EOL
       if application "Spotify" is running then
