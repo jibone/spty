@@ -14,6 +14,9 @@ RSpec.describe 'get player state' do
         run_command 'spty player state'
 
         expect($stdout.string).to include('=> player paused')
+
+        deprecation_message = 'Command is deprecated. Use "spty state".'
+        expect($stdout.string).to include(deprecation_message)
       end
     end
 

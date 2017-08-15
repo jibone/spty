@@ -23,6 +23,8 @@ RSpec.describe 'Replay previous track' do
         output = '=> Bohemian Rhapsody - Queen [paused]'
         expect($stdout.string).to include(output)
 
+        deprecation_message = 'Command is deprecated. Use "spty replay".'
+        expect($stdout.string).to include(deprecation_message)
       end
     end
 

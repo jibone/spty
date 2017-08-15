@@ -19,10 +19,11 @@ module Spty::Command
     ASCRIPT_PLAYER_STATE = <<-EOL
       tell application "Spotify" to return player state
     EOL
-    def self.state(_)
+    def self.state(_, command = 'state')
       if running?
         player_state = Spty::AppleScriptRunner.(ASCRIPT_PLAYER_STATE)
         puts "=> player #{player_state}"
+        puts "Command is deprecated. Use \"spty #{command}\"."
       end
     end
 
@@ -33,7 +34,7 @@ module Spty::Command
     def self.toggle(_)
       if running?
         Spty::AppleScriptRunner.(ASCRIPT_PLAYER_TOGGLE)
-        state(nil)
+        state(nil, 'toggle')
       end
     end
   end

@@ -8,13 +8,14 @@ module Spty::Command
         return currentTrack & " - " & currentArtist
       end tell
     EOL
-    def self.info(_)
+    def self.info(_, command = 'info')
       if Spty::Command::PlayerCommand.running?
         track_info = Spty::AppleScriptRunner.(ASCRIPT_TRACK_INFO)
         player_state_script = Spty::Command::PlayerCommand::ASCRIPT_PLAYER_STATE
         player_state = Spty::AppleScriptRunner.(player_state_script)
 
         puts "=> #{track_info.strip} [#{player_state.strip}]"
+        puts "Command is deprecated. Use \"spty #{command}\"."
       end
     end
 
@@ -24,7 +25,7 @@ module Spty::Command
       end tell
     EOL
     def self.skip(_)
-      move_track(ASCRIPT_TRACK_SKIP)
+      move_track(ASCRIPT_TRACK_SKIP, 'skip')
     end
 
     ASCRIPT_TRACK_REPLAY = <<-EOL
@@ -33,13 +34,13 @@ module Spty::Command
       end tell
     EOL
     def self.replay(_)
-      move_track(ASCRIPT_TRACK_REPLAY)
+      move_track(ASCRIPT_TRACK_REPLAY, 'replay')
     end
 
-    def self.move_track(ascript)
+    def self.move_track(ascript, command)
       if Spty::Command::PlayerCommand.running?
         Spty::AppleScriptRunner.(ascript)
-        Spty::Command::TrackCommand.info(nil)
+        Spty::Command::TrackCommand.info(nil, command)
       end
     end
 

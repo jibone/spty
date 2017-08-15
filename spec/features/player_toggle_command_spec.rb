@@ -18,6 +18,8 @@ RSpec.describe 'toggle Spotify player play/pause' do
           run_command 'spty player toggle'
 
           expect($stdout.string).to include('=> player paused')
+          deprecation_message = 'Command is deprecated. Use "spty toggle".'
+          expect($stdout.string).to include(deprecation_message)
         end
       end
     end

@@ -22,6 +22,9 @@ RSpec.describe 'Skip track and play the next track' do
 
         output = '=> Bohemian Rhapsody - Queen [paused]'
         expect($stdout.string).to include(output)
+
+        deprecation_message = 'Command is deprecated. Use "spty skip".'
+        expect($stdout.string).to include(deprecation_message)
       end
     end
 
