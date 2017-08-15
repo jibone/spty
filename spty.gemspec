@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["jibone@gmail.com"]
 
   spec.summary       = %q{Spotify Player Terminal Utility}
-  spec.description   = %q{Lets you control your Spotify player from the terminal
-                          Currently only works for Mac OSX.}
+  spec.description   = "Control your Spotify player from the terminal. "\
+                       "Currently only works for Mac OSX."
   spec.homepage      = "https://github.com/jibone/spty-rb"
   spec.license       = "MIT"
 
