@@ -8,7 +8,7 @@ RSpec.describe 'get player state' do
           .and_return(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::PlayerCommand::ASCRIPT_PLAYER_STATE)
+          .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
         run_command 'spty player state'

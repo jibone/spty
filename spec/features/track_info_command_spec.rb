@@ -8,7 +8,7 @@ RSpec.describe 'get track name and artist' do
           .and_return(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::PlayerCommand::ASCRIPT_PLAYER_STATE)
+          .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
         expect(Spty::AppleScriptRunner).to receive(:call)

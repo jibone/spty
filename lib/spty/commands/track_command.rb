@@ -11,7 +11,7 @@ module Spty::Command
     def self.info(_, command = 'info')
       if Spty::Command::PlayerCommand.running?
         track_info = Spty::AppleScriptRunner.(ASCRIPT_TRACK_INFO)
-        player_state_script = Spty::Command::PlayerCommand::ASCRIPT_PLAYER_STATE
+        player_state_script = Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE
         player_state = Spty::AppleScriptRunner.(player_state_script)
 
         puts "=> #{track_info.strip} [#{player_state.strip}]"
