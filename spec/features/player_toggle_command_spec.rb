@@ -9,7 +9,7 @@ RSpec.describe 'toggle Spotify player play/pause' do
             .and_return(true)
 
           expect(Spty::AppleScriptRunner).to receive(:call)
-            .with(Spty::Command::PlayerCommand::ASCRIPT_PLAYER_TOGGLE)
+            .with(Spty::Command::ToggleCommand::ASCRIPT_PLAYER_TOGGLE)
 
           expect(Spty::AppleScriptRunner).to receive(:call)
             .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
