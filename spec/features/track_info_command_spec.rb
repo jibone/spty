@@ -12,7 +12,7 @@ RSpec.describe 'get track name and artist' do
           .and_return('paused')
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::TrackCommand::ASCRIPT_TRACK_INFO)
+          .with(Spty::Command::InfoCommand::ASCRIPT_TRACK_INFO)
           .and_return('Bohemian Rhapsody - Queen')
 
         run_command 'spty track info'

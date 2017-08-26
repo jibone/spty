@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-RSpec.describe 'Skip track and play the next track' do
-  context 'spty track skip' do
+RSpec.describe 'Replay previous track' do
+  context 'spty replay' do
     context 'when application is running' do
-      it 'runs AppleScript skip to the next track' do
+      it 'runs AppleScript previous command to replay the previous track' do
         allow(Spty::Command::PlayerCommand).to receive(:running?)
           .and_return(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::SkipCommand::ASCRIPT_TRACK_SKIP)
+          .with(Spty::Command::ReplayCommand::ASCRIPT_TRACK_REPLAY)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
           .with(Spty::Command::InfoCommand::ASCRIPT_TRACK_INFO)
@@ -18,16 +18,13 @@ RSpec.describe 'Skip track and play the next track' do
           .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
-        run_command 'spty track skip'
+        run_command 'spty replay'
 
         output = '=> Bohemian Rhapsody - Queen [paused]'
         expect($stdout.string).to include(output)
-
-        deprecation_message = 'Command is deprecated. Use "spty skip".'
-        expect($stdout.string).to include(deprecation_message)
       end
     end
 
-    it_behaves_like 'application not launched', 'spty track skip'
+    it_behaves_like 'application not launched', 'spty replay'
   end
 end

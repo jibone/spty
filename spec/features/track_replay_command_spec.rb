@@ -8,10 +8,10 @@ RSpec.describe 'Replay previous track' do
           .and_return(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::TrackCommand::ASCRIPT_TRACK_REPLAY)
+          .with(Spty::Command::ReplayCommand::ASCRIPT_TRACK_REPLAY)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::TrackCommand::ASCRIPT_TRACK_INFO)
+          .with(Spty::Command::InfoCommand::ASCRIPT_TRACK_INFO)
           .and_return('Bohemian Rhapsody - Queen')
 
         expect(Spty::AppleScriptRunner).to receive(:call)
