@@ -8,7 +8,7 @@ module Spty::Command
         return currentTrack & " - " & currentArtist
       end tell
     EOL
-    def self.call(_, command = 'info')
+    def self.call(_, _command = 'info')
       if Spty::Command::PlayerCommand.running?
         track_info = Spty::AppleScriptRunner.(ASCRIPT_TRACK_INFO)
         player_state_script = Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE

@@ -4,7 +4,7 @@ module Spty::Command
     # This command is deprecated.
     def self.info(_, command = 'info')
       if Spty::Command::PlayerCommand.running?
-        Spty::Command::InfoCommand.(_, 'info')
+        Spty::Command::InfoCommand.(nil, 'info')
         puts "Command is deprecated. Use \"spty #{command}\"."
       end
     end
