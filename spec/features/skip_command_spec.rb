@@ -18,16 +18,13 @@ RSpec.describe 'Skip track and play the next track' do
           .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
-        run_command 'spty track skip'
+        run_command 'spty skip'
 
         output = '=> Bohemian Rhapsody - Queen [paused]'
         expect($stdout.string).to include(output)
-
-        deprecation_message = 'Command is deprecated. Use "spty skip".'
-        expect($stdout.string).to include(deprecation_message)
       end
     end
 
-    it_behaves_like 'application not launched', 'spty track skip'
+    it_behaves_like 'application not launched', 'spty skip'
   end
 end

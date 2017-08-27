@@ -15,25 +15,21 @@ module Spty::Command
       puts "=> player not running" and return false
     end
 
-    # Display the current state of the player.
-    ASCRIPT_PLAYER_STATE = <<-EOL
-      tell application "Spotify" to return player state
-    EOL
-    def self.state(_)
+    # Method is depreciated. It calls the actuall method
+    # This method should be removed on next release
+    def self.state(_, command = 'state')
       if running?
-        player_state = Spty::AppleScriptRunner.(ASCRIPT_PLAYER_STATE)
-        puts "=> player #{player_state}"
+        Spty::Command::StateCommand.('state')
+        puts "Command is deprecated. Use \"spty #{command}\"."
       end
     end
 
-    # Toggle player play / pause
-    ASCRIPT_PLAYER_TOGGLE = <<-EOL
-      tell application "Spotify" to playpause
-    EOL
-    def self.toggle(_)
+    # Method is depreciated. It calls the actuall method
+    # This method should be removed on next release
+    def self.toggle(_, command = 'toggle')
       if running?
-        Spty::AppleScriptRunner.(ASCRIPT_PLAYER_TOGGLE)
-        state(nil)
+        Spty::Command::ToggleCommand.(nil, 'toggle')
+        puts "Command is deprecated. Use \"spty #{command}\"."
       end
     end
   end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe 'get player state' do
-  context 'spty player state' do
+  context 'spty state' do
     context 'when application is launched' do
       it 'shows the current application state' do
         allow(Spty::Command::PlayerCommand).to receive(:running?)
@@ -11,12 +11,9 @@ RSpec.describe 'get player state' do
           .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
-        run_command 'spty player state'
+        run_command 'spty state'
 
         expect($stdout.string).to include('=> player paused')
-
-        deprecation_message = 'Command is deprecated. Use "spty state".'
-        expect($stdout.string).to include(deprecation_message)
       end
     end
 

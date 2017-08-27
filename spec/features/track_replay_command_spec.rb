@@ -8,14 +8,14 @@ RSpec.describe 'Replay previous track' do
           .and_return(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::TrackCommand::ASCRIPT_TRACK_REPLAY)
+          .with(Spty::Command::ReplayCommand::ASCRIPT_TRACK_REPLAY)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::TrackCommand::ASCRIPT_TRACK_INFO)
+          .with(Spty::Command::InfoCommand::ASCRIPT_TRACK_INFO)
           .and_return('Bohemian Rhapsody - Queen')
 
         expect(Spty::AppleScriptRunner).to receive(:call)
-          .with(Spty::Command::PlayerCommand::ASCRIPT_PLAYER_STATE)
+          .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
           .and_return('paused')
 
         run_command 'spty track replay'
@@ -23,6 +23,8 @@ RSpec.describe 'Replay previous track' do
         output = '=> Bohemian Rhapsody - Queen [paused]'
         expect($stdout.string).to include(output)
 
+        deprecation_message = 'Command is deprecated. Use "spty replay".'
+        expect($stdout.string).to include(deprecation_message)
       end
     end
 
