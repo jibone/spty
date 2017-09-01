@@ -19,6 +19,5 @@ RSpec.describe 'AppleScriptRunner' do
 
       expect(Spty::AppleScriptRunner.('script')).to eq('output')
     end
-
   end
 end
