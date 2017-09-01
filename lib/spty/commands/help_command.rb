@@ -15,7 +15,7 @@ module Spty::Command
       "\n"\
       "Version: #{Spty::VERSION}"
 
-    def self.call(command = nil, _)
+    def self.call(_command, _)
       puts HELP_TEXT
     end
   end
