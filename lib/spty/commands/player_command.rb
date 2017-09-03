@@ -8,11 +8,18 @@ module Spty::Command
         return "Not running"
       end if
     EOL
-    def self.running?
+    def self.running?(show_mesg: true)
       player_running = Spty::AppleScriptRunner.(ASCRIPT_PLAYER_DETECT)
       return true if player_running.strip == 'Running'
 
-      puts "=> player not running" and return false
+      if show_mesg
+        output = "player not running\n"\
+                 "to launch Spotify player, use: spty launch"
+
+        puts output
+      end
+
+      false
     end
 
     # Method is depreciated. It calls the actuall method

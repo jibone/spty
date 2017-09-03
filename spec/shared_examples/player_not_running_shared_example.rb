@@ -7,7 +7,10 @@ RSpec.shared_examples 'application not launched' do |command_string|
 
       run_command command_string
 
-      expect($stdout.string).to include('=> player not running')
+      output = "player not running\n"\
+               "to launch Spotify player, use: spty launch\n"
+
+      expect($stdout.string).to include(output)
     end
   end
 end
