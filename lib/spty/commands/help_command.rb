@@ -12,7 +12,7 @@ module Spty::Command
       "  volume            Shows the current volume level"\
       "  volume up         Increase the volume level by 10"\
       "  volume down       Decrease the volume level by 11"\
-      "  volume [number]   Set the volume level to number"
+      "  volume [number]   Set the volume level to number"\
       "\n"\
       "Track specific command\n"\
       "  info              Show information for the current track\n"\
