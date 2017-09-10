@@ -1,30 +1,23 @@
 module Spty::Command
   class VolumeCommand
     def self.call(options, _)
-      if Spty::Command::PlayerCommand.running?
-        action = options.shift
+      return unless Spty::Command::PlayerCommand.running?
 
-        # call status if no sub command was called.
-        action = 'status' if action.nil?
+      action = options.shift
 
-        # if sub command is number, trigger volume set with the number.
-        if action =~ /\A\d+\z/
-          vol_level = action.to_i
+      # call status if no sub command was called.
+      action = 'status' if action.nil?
 
-          if vol_level < 0 || vol_level > 100
-            puts 'volume level should be between 0 to 100'
-            return
-          end
+      # if sub command is number, trigger volume set with the number.
+      if action =~ /\A\d+\z/
+        options = action.to_i
+        action = 'level'
+      end
 
-          action = 'level'
-          options = vol_level
-        end
-
-        begin
-          send(action.to_sym, options)
-        rescue NameError => _e
-          puts "unknown volume command #{action}"
-        end
+      begin
+        send(action.to_sym, options)
+      rescue NameError => _e
+        puts "unknown volume command #{action}"
       end
     end
 
@@ -70,6 +63,11 @@ module Spty::Command
       tell application "Spotify" to set sound volume to %<level>s
     EOL
     def self.level(options)
+      if options < 0 || options > 100
+        puts 'volume level should be between 0 to 100'
+        return
+      end
+
       script = format(ASCRIPT_PLAYER_VOLUME_SET, level: options)
       Spty::AppleScriptRunner.call(script)
       status
