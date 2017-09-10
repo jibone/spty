@@ -7,8 +7,11 @@ module Spty
         klass = Object.const_get("Spty::Command::#{command.capitalize}Command")
         klass.(args, command)
       rescue NameError => _e
-        puts "Do not understand command: #{command}"
-        # [todo] display help menu with list of all valid commands
+        if !command.nil?
+          puts "Do not understand command: #{command}"
+        end
+
+        Spty::Command::HelpCommand.(args, command)
       end
     end
   end

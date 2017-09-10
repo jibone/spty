@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 
 RSpec.describe 'get track name and artist' do
