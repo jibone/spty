@@ -45,6 +45,26 @@ Replay previous track
 $ spty track replay
 ```
 
+Show current volume level
+```
+$ spty volume
+```
+
+Increase the volume level by 10
+```
+$ spty volume up
+```
+
+Decrease the volume level by 10
+```
+$ spty volume down
+```
+
+Set the volume level with given number
+```
+$ spty volume [number]
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at
