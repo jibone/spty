@@ -1,7 +1,7 @@
 module Spty::Command
-  class VolumeCommand
+  class VolumeCommand < BaseCommand
     def self.call(options, _)
-      return unless Spty::Command::PlayerCommand.running?
+      return unless running?
 
       action = options.shift
 

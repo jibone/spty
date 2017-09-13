@@ -7,10 +7,10 @@ module Spty::Command
       end tell
     EOL
     def self.call(_, command = 'replay')
-      if Spty::Command::PlayerCommand.running?
-        Spty::AppleScriptRunner.(ASCRIPT_TRACK_REPLAY)
-        Spty::Command::InfoCommand.(nil, command)
-      end
+      return unless running?
+
+      Spty::AppleScriptRunner.(ASCRIPT_TRACK_REPLAY)
+      Spty::Command::InfoCommand.(nil, command)
     end
 
   end

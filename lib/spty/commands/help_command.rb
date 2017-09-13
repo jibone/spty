@@ -1,6 +1,5 @@
 module Spty::Command
   class HelpCommand
-
     HELP_TEXT =
       "usage: spty <command> [<args>]\n"\
       "\n"\

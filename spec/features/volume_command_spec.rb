@@ -3,8 +3,7 @@ require 'spec_helper'
 RSpec.describe 'command: spty volume' do
   context 'with sub command: spty volume up' do
     it 'increases the volume by 10' do
-      allow(Spty::Command::PlayerCommand).to receive(:running?)
-        .and_return(true)
+      mock_player_running(true)
 
       expect(Spty::AppleScriptRunner).to receive(:call)
         .with(Spty::Command::VolumeCommand::ASCRIPT_PLAYER_VOLUME_UP)
@@ -24,8 +23,7 @@ RSpec.describe 'command: spty volume' do
 
   context 'with sub command: spty volume down' do
     it 'decreases the volume by 10' do
-      allow(Spty::Command::PlayerCommand).to receive(:running?)
-        .and_return(true)
+      mock_player_running(true)
 
       expect(Spty::AppleScriptRunner).to receive(:call)
         .with(Spty::Command::VolumeCommand::ASCRIPT_PLAYER_VOLUME_DOWN)
@@ -46,8 +44,7 @@ RSpec.describe 'command: spty volume' do
   context 'with sub command: spty volume [number]' do
     context 'and [number] is within the range (0 - 100)' do
       it 'set the volume with the given number' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         script = format(
           Spty::Command::VolumeCommand::ASCRIPT_PLAYER_VOLUME_SET,
@@ -72,8 +69,7 @@ RSpec.describe 'command: spty volume' do
 
     context 'and [number] is not within the range (0 - 100)' do
       it 'shows error message and does not run the script' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         expect(Spty::AppleScriptRunner).to_not receive(:call)
 
@@ -89,8 +85,7 @@ RSpec.describe 'command: spty volume' do
 
   context 'with sub command: spty volume status' do
     it 'shows the current volume level' do
-      allow(Spty::Command::PlayerCommand).to receive(:running?)
-        .and_return(true)
+      mock_player_running(true)
 
       expect(Spty::AppleScriptRunner).to receive(:call)
         .with(Spty::Command::VolumeCommand::ASCRIPT_PLAYER_VOLUME_STATUS)
@@ -107,8 +102,7 @@ RSpec.describe 'command: spty volume' do
 
   context 'with no sub command: spty volume' do
     it 'shows the current volume level' do
-      allow(Spty::Command::PlayerCommand).to receive(:running?)
-        .and_return(true)
+      mock_player_running(true)
 
       expect(Spty::AppleScriptRunner).to receive(:call)
         .with(Spty::Command::VolumeCommand::ASCRIPT_PLAYER_VOLUME_STATUS)
@@ -125,8 +119,7 @@ RSpec.describe 'command: spty volume' do
 
   context 'with invalid sub commandL spty volume xxx' do
     it 'shows error message' do
-      allow(Spty::Command::PlayerCommand).to receive(:running?)
-        .and_return(true)
+      mock_player_running(true)
 
       run_command 'spty volume xxx'
 

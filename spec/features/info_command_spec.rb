@@ -4,8 +4,7 @@ RSpec.describe 'get track name and artist' do
   context 'spty info' do
     context 'when application is running' do
       it 'shows the current application state and the track running' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
           .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)

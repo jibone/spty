@@ -4,8 +4,7 @@ RSpec.describe 'Replay previous track' do
   context 'spty replay' do
     context 'when application is running' do
       it 'runs AppleScript previous command to replay the previous track' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
           .with(Spty::Command::ReplayCommand::ASCRIPT_TRACK_REPLAY)
