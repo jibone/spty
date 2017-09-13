@@ -4,8 +4,7 @@ RSpec.describe 'Launch spotify player' do
   context 'spty launch' do
     context 'when application is not running' do
       it 'launch the application' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(false)
+        mock_player_running(false)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
           .with(Spty::Command::LaunchCommand::ASCRIPT_PLAYER_LAUNCH)
@@ -19,8 +18,7 @@ RSpec.describe 'Launch spotify player' do
 
     context 'when application is running' do
       it 'does not launch the application' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         expect(Spty::AppleScriptRunner).to_not receive(:call)
           .with(Spty::Command::LaunchCommand::ASCRIPT_PLAYER_LAUNCH)

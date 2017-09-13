@@ -22,27 +22,27 @@ $ spty version
 
 Show current player state
 ```
-$ spty player state
+$ spty state
 ```
 
 Toggle player play / pause
 ```
-$ spty player toggle
+$ spty toggle
 ```
 
 Get track title and artist
 ```
-$ spty track info
+$ spty info
 ```
 
 Skip track and play the next track
 ```
-$ spty track skip
+$ spty skip
 ```
 
 Replay previous track
 ```
-$ spty track replay
+$ spty replay
 ```
 
 Show current volume level

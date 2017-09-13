@@ -6,6 +6,7 @@ require "spty"
 require 'byebug'
 
 dir = File.dirname(__FILE__)
+require "#{dir}/support/mock_helper"
 require "#{dir}/support/command_runner_helper"
 require "#{dir}/shared_examples/player_not_running_shared_example"
 
@@ -19,6 +20,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  # Include command runner helper
+  config.include MockHelper
 
   # Include command runner helper
   config.include CommandRunnerHelper

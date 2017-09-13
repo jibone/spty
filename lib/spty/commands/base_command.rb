@@ -1,13 +1,25 @@
 module Spty::Command
   class BaseCommand
-    def self.call(options, command)
-      action = options.shift
+    # Check if the application is running
+    ASCRIPT_PLAYER_DETECT = <<-EOL
+      if application "Spotify" is running then
+        return "Running"
+      else
+        return "Not running"
+      end if
+    EOL
+    def self.running?(show_mesg: true)
+      player_running = Spty::AppleScriptRunner.(ASCRIPT_PLAYER_DETECT)
+      return true if player_running.strip == 'Running'
 
-      begin
-        self.send(action.to_sym, options)
-      rescue NameError => _e
-        puts "Do not understand command: #{command} #{action}"
+      if show_mesg
+        output = "player not running\n"\
+                 "to launch Spotify player, use: spty launch"
+
+        puts output
       end
+
+      false
     end
   end
 end

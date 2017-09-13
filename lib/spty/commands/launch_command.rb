@@ -1,11 +1,11 @@
 module Spty::Command
-  class LaunchCommand
+  class LaunchCommand < BaseCommand
     ASCRIPT_PLAYER_LAUNCH = <<-EOL
       tell application "Spotify" to activate
     EOL
 
     def self.call(_, _command = 'launch')
-      if Spty::Command::PlayerCommand.running?(show_mesg: false)
+      if running?(show_mesg: false)
         puts 'Spotify player is running'
         return
       end

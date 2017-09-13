@@ -1,6 +1,5 @@
 module Spty::Command
   class HelpCommand
-
     HELP_TEXT =
       "usage: spty <command> [<args>]\n"\
       "\n"\
@@ -9,10 +8,10 @@ module Spty::Command
       "  toggle            Toggle player play or pause\n"\
       "  skip              Skip the current track and play the next track\n"\
       "  replay            Replay the current track\n"\
-      "  volume            Shows the current volume level"\
-      "  volume up         Increase the volume level by 10"\
-      "  volume down       Decrease the volume level by 11"\
-      "  volume [number]   Set the volume level to number"\
+      "  volume            Shows the current volume level\n"\
+      "  volume up         Increase the volume level by 10\n"\
+      "  volume down       Decrease the volume level by 11\n"\
+      "  volume [number]   Set the volume level to number\n"\
       "\n"\
       "Track specific command\n"\
       "  info              Show information for the current track\n"\

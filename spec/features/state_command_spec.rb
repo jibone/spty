@@ -4,8 +4,7 @@ RSpec.describe 'get player state' do
   context 'spty state' do
     context 'when application is launched' do
       it 'shows the current application state' do
-        allow(Spty::Command::PlayerCommand).to receive(:running?)
-          .and_return(true)
+        mock_player_running(true)
 
         expect(Spty::AppleScriptRunner).to receive(:call)
           .with(Spty::Command::StateCommand::ASCRIPT_PLAYER_STATE)
@@ -17,6 +16,6 @@ RSpec.describe 'get player state' do
       end
     end
 
-    it_behaves_like 'application not launched', 'spty player state'
+    it_behaves_like 'application not launched', 'spty state'
   end
 end
