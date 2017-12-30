@@ -117,7 +117,7 @@ RSpec.describe 'command: spty volume' do
     it_behaves_like 'application not launched', 'spty volume'
   end
 
-  context 'with invalid sub commandL spty volume xxx' do
+  context 'with invalid sub command spty volume xxx' do
     it 'shows error message' do
       mock_player_running(true)
 
