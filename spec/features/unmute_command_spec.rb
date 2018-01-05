@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-RSpec.describe 'command: spty mute' do
+RSpec.describe 'command: spty unmute' do
   context 'when player is running' do
-    it 'sets volume to 0' do
+    it 'sets volume to 60' do
       mock_player_running(true)
 
       expect(Spty::AppleScriptRunner).to receive(:call)
-        .with(Spty::Command::MuteCommand::ASCRIPT_PLAYER_MUTE)
+        .with(Spty::Command::UnmuteCommand::ASCRIPT_PLAYER_UNMUTE)
 
-      run_command 'spty mute'
+      run_command 'spty unmute'
 
-      output = 'Player mute'
+      output = 'Player unmute'
       expect($stdout.string).to include(output)
     end
   end
