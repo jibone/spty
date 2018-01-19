@@ -15,5 +15,5 @@ RSpec.describe 'command: spty mute' do
     end
   end
 
-  it_behaves_like 'application not launched', 'spty toggle'
+  it_behaves_like 'application not launched', 'spty mute'
 end
