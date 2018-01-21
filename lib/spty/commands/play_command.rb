@@ -18,7 +18,8 @@ module Spty::Command
 
       track_info_script = Spty::Command::InfoCommand::ASCRIPT_TRACK_INFO
       track_info = Spty::AppleScriptRunner.(track_info_script)
-      puts "=> #{track_info.strip} [#{player_state.strip}]"
+
+      puts "=> #{track_info.strip} [playing]"
     end
   end
 end
