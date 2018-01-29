@@ -25,6 +25,16 @@ Show current player state
 $ spty state
 ```
 
+Play the current track
+```
+$ spty play
+```
+
+Pause the current track
+```
+$ spty pause
+```
+
 Toggle player play / pause
 ```
 $ spty toggle
@@ -63,6 +73,16 @@ $ spty volume down
 Set the volume level with given number
 ```
 $ spty volume [number]
+```
+
+Set the volume level to 0
+```
+$ spty mute
+```
+
+Set the volume level to 60
+```
+$ spty unmute
 ```
 
 ## Contributing
