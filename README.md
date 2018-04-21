@@ -1,5 +1,7 @@
 # Spty
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/44d9bbca7b45da0f41d4/maintainability)](https://codeclimate.com/github/jibone/spty-rb/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/44d9bbca7b45da0f41d4/test_coverage)](https://codeclimate.com/github/jibone/spty-rb/test_coverage)
+
 Spotify Player Terminal Utility. CLI that lets you control your
 [Spotify](http://spotify.com) player from the terminal. Only works on MacOSX as
 it uses [AppleScript API](https://developer.spotify.com/applescript-api/)
